@@ -1,77 +1,75 @@
+// src/services/geminiService.ts
+
 import { GoogleGenAI } from "@google/genai";
-import { User, DailyProgress } from '../types';
+import { User } from "../types";
 
-// Updated to use Vite environment variable system
-const getAiClient = () => {
-  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+// ✅ FIX 1: Make Vite env access safe for Vercel Build
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY as string;
 
-  if (!apiKey) {
-    console.error("API Key missing");
-    return null;
-  }
+if (!apiKey) {
+  console.warn("❌ VITE_GEMINI_API_KEY is missing. Check .env.local or Vercel Env Vars.");
+}
 
-  return new GoogleGenAI({ apiKey });
-};
+// Create AI client safely
+const ai = new GoogleGenAI({ apiKey });
+
+// ---------------------------------------------------
 
 export const generateSystemMessage = async (
-  context: 'LOGIN' | 'LEVEL_UP' | 'FAILURE' | 'ADVICE' | 'REMINDER' | 'PENALTY',
+  context: "LOGIN" | "LEVEL_UP" | "FAILURE" | "ADVICE" | "REMINDER" | "PENALTY",
   user: User,
   userQuery?: string
 ): Promise<string> => {
-  const ai = getAiClient();
-  if (!ai) return "SYSTEM ERROR: API KEY NOT FOUND.";
+  const modelId = "gemini-2.5-flash";
 
-  const modelId = "gemini-2.5-flash"; 
-  
-  let prompt = "";
-  
   const baseSystemInstruction = `
-    You are 'The System' from the Solo Leveling universe. 
-    You speak directly to the 'Player' (User: ${user.username}).
-    Your tone is robotic, cold, authoritative, yet helpful in a gamified way.
-    Use terms like 'Player', 'Daily Quest', 'Stats', 'Penalty Zone'.
-    Format your response as a system notification window text.
-    Keep it concise (under 50 words unless asked for advice).
+    You are 'The System' from Solo Leveling.
+    Speak with a robotic, cold, dominating tone.
+    Refer to user as 'Player'.
+    Use RPG terms like Stats, Level, Title, Rank, Penalty Zone.
+    Format like a system notification window.
   `;
 
+  let prompt = "";
+
   switch (context) {
-    case 'LOGIN':
-      prompt = `The player has logged in. Current Level: ${user.level}. Streak: ${user.streak}. Welcome them back and remind them of the Daily Quest: Strength Training.`;
+    case "LOGIN":
+      prompt = `Player has logged in. Level: ${user.level}. Streak: ${user.streak}. Welcome them and remind about today's Daily Quest.`;
       break;
 
-    case 'LEVEL_UP':
-      prompt = `The player reached Level ${user.level}! Congratulate them coldly. Remind them to allocate stat points.`;
+    case "LEVEL_UP":
+      prompt = `Player reached Level ${user.level}. Congratulate coldly. Tell them to allocate stat points.`;
       break;
 
-    case 'FAILURE':
-      prompt = `The player failed to complete the daily quest. Warn them about the 'Penalty Zone'.`;
+    case "FAILURE":
+      prompt = `Player failed the daily quest. Warn them about the Penalty Zone.`;
       break;
 
-    case 'ADVICE':
-      prompt = `The player is asking for advice: "${userQuery}". Provide a fitness-focused answer but wrapped in RPG metaphors (describe muscle growth like Strength stat increase). Keep it under 100 words.`;
+    case "ADVICE":
+      prompt = `Player asks: "${userQuery}". Provide fitness-RPG advice. Keep it under 100 words.`;
       break;
 
-    case 'REMINDER':
-      prompt = `The player hasn't completed their daily quest yet. Time is ticking. Generate a short, threatening notification about the consequences (Penalty Zone).`;
+    case "REMINDER":
+      prompt = `Player is late. Remind them the Daily Quest remains incomplete. Threaten the Penalty Zone.`;
       break;
 
-    case 'PENALTY':
-      prompt = `The player has FAILED or FORFEITED the Daily Quest. Announce "Penalty Quest: Survival". Describe a terrifying environment (giant centipedes / desert) they must survive. Be menacing.`;
+    case "PENALTY":
+      prompt = `Player triggered Penalty Quest: Survival. Describe the danger in a menacing, Solo Leveling tone.`;
       break;
   }
 
   try {
-    const response = await ai.models.generateContent({
+    const result = await ai.models.generateContent({
       model: modelId,
       contents: prompt,
       config: {
         systemInstruction: baseSystemInstruction,
-      }
+      },
     });
 
-    return response.text || "SYSTEM: CONNECTION UNSTABLE.";
-  } catch (error) {
-    console.error("Gemini API Error:", error);
+    return result.text || "SYSTEM: CONNECTION UNSTABLE.";
+  } catch (err) {
+    console.error("Gemini API ERROR:", err);
     return "SYSTEM: OFFLINE.";
   }
 };
