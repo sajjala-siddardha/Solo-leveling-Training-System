@@ -622,7 +622,9 @@ const App: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
           <SystemWindow title="Hunter Supply Shop" className="max-w-3xl w-full">
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            {/* ⭐ SCROLLABLE SHOP CONTENT ⭐ */}
+      <div className="max-h-[70vh] overflow-y-auto pr-2 grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+
 
               {/* ───────── POTIONS ───────── */}
               <div
@@ -949,14 +951,18 @@ const App: React.FC = () => {
               )}
 
             </div>
+   </div>
 
-            <div className="flex justify-end mt-4 pt-4 border-t border-slate-700">
-              <Button onClick={() => setShowItemBox(false)}>Close</Button>
-            </div>
-
-          </SystemWindow>
+      <div className="flex justify-between items-center mt-4 pt-4 border-t border-slate-700">
+        <div className="text-yellow-400 font-bold font-mono-tech">
+          Gold: {user.gold.toLocaleString()} G
         </div>
-      )}
+        <Button onClick={() => setShowShop(false)}>Close Shop</Button>
+      </div>
+
+    </SystemWindow>
+  </div>
+)}
 
       {/* SYSTEM NOTIFICATION MODAL */}
       {systemNotif && !penaltyActive && !showShop && !showItemBox && (
