@@ -17,7 +17,7 @@ Complete your daily quests, manage inventory, equip gear, chat with the System, 
 - 🔔 **System Notifications**
 - 🔊 **Sound Effects**
 - 🌑 **Solo Leveling Dark UI Theme**
-- 🔥 **Penalty Mode** (20:00 survival clicks — from anime)
+- 🔥 **Penalty Mode** (20:00 survival clicks — anime inspired)
 - 💾 **LocalStorage Save System**
 
 ---
@@ -53,96 +53,121 @@ package.json
 vite.config.ts
 README.md
 ```
-🔐 Environment Setup
+
+---
+
+## 🔐 Environment Setup
+
 Create a file:
 
-lua
-Copy code
+```
 .env.local
+```
+
 Inside add:
 
-ini
-Copy code
+```
 VITE_GEMINI_API_KEY=YOUR_API_KEY_HERE
-⚠️ Never upload this file
-It is already protected using .gitignore.
+```
+
+⚠️ Never upload this file (it is protected by `.gitignore`).
 
 ---
-🛠 Installation
-bash
-Copy code
-npm install
-Start development:
 
-bash
-Copy code
+## 🛠 Installation
+
+Install packages:
+
+```bash
+npm install
+```
+
+Run development server:
+
+```bash
 npm run dev
+```
+
 Build for production:
 
-bash
-Copy code
+```bash
 npm run build
-Preview build:
+```
 
-bash
-Copy code
+Preview production build:
+
+```bash
 npm run preview
-☁️ Deploy on Vercel
-Push repo to GitHub
+```
 
-Go to vercel.com → Import repository
-
-Add an environment variable:
-
-ini
-Copy code
-VITE_GEMINI_API_KEY=YOUR_KEY
-Deploy ✔
 ---
-🤖 System Chat Example
-Ask for training routines
-Ask for diet advice
-Ask for strategy upgrades
-Ask for Solo Leveling themed responses
-Clear chat anytime
+
+## ☁️ Deploy on Vercel
+
+1. Push repo to GitHub  
+2. Go to **Vercel.com → Import Repository**
+3. Add an environment variable:
+
+```
+VITE_GEMINI_API_KEY=YOUR_KEY_HERE
+```
+
+4. Deploy ✔
+
 ---
-📦 Inventory & Gear System
-Buy items from the Shop
 
-Equip gear with stat bonuses
+## 🤖 System Chat
 
-Inventory saved in LocalStorage
+The System Consultant can answer:
 
-Runes give special buffs
+- Training recommendations  
+- Diet advice  
+- Motivation  
+- Solo Leveling–style responses  
+- Clear chat feature  
+- Memory saved in LocalStorage  
 
-Potions give one-time boosts
 ---
-🔥 Penalty Mode
-After 20:00, if quests are not completed:
 
-System triggers penalty
+## 🎒 Inventory & Gear System
 
-User must survive by clicking
+- Purchase items from Shop  
+- Equip Gear (weapon/armor/cloak/rings/runes)  
+- Potions give temporary boosts  
+- Runes grant stat enhancements  
+- Materials & Boxes stored for later use  
 
-Dramatic sound effects
-
-Inspired by anime time-limit penalties
 ---
-🧙 Powered By
-React + TypeScript
 
-Vite
+## 🔥 Penalty Mode
 
-Gemini AI
+If quests remain incomplete after **20:00**:
 
-TailwindCSS
+- System activates penalty  
+- User must survive by rapid clicking  
+- Alarms and dramatic UI effects  
+- Inspired by Solo Leveling time-limit scenes  
 
-LocalStorage Persistence
 ---
-⭐ Give the Project a Star!
-If you like the project, please ⭐ the repo!
-More features coming soon — raids, dungeon mode, awakening system, pets, and more.
+
+## 🧙 Powered By
+
+- React + TypeScript  
+- Vite  
+- Gemini AI  
+- TailwindCSS  
+- LocalStorage persistence  
+
 ---
-📞 Developer
-Built by Sajjala Siddardha
-Solo Leveling Inspired Training Assistant
+
+## ⭐ Give the Project a Star
+
+If you like the project, please ⭐ the repo!  
+More updates coming soon — raids, dungeon mode, awakening system, pets, and more.
+
+---
+
+## 📞 Developer
+
+**Built by:** *Sajjala Siddardha*  
+Solo Leveling Inspired Trainer System
