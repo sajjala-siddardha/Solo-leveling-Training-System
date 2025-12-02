@@ -1,70 +1,24 @@
-# ⚔️ SOLO LEVELING — TRAINING SYSTEM (React + Vite)
+# ⚔️ Solo Leveling Training System — React + Vite
 
-A full gamified fitness system inspired by **Solo Leveling**.  
-Players complete daily quests, level up, earn gold, buy items, equip gear, gain bonuses, survive penalties, and receive AI-generated guidance — all inside a futuristic “System Interface”.
-
-Built with:
-- **React + TypeScript**
-- **Vite**
-- **LocalStorage Persistence**
-- **Google Gemini API (for System Assistant)**
+A gamified training assistant inspired by **Solo Leveling**, built using **React**, **TypeScript**, **Vite**, and **Gemini AI**.  
+Complete your daily quests, manage inventory, equip gear, chat with the System, and level up — just like a real hunter.
 
 ---
 
-## 🚀 FEATURES
+## 🚀 Features
 
-### 🧩 Player System
-- Login with **name + Gmail**
-- Persistent user data (level, XP, gold, stats, streak)
-
-### 🏋️ Daily Training Quest
-- Push-ups, Sit-ups, Squats, Running
-- Auto reset daily
-- Rewards XP + Gold on completion
-
-### 🏆 Leveling System
-- Level up automatically
-- Earn stat points
-- XP scaling per level
-
-### 🛒 Item Shop
-- Buy Potions, Mystery Boxes, Dungeon Keys  
-- Buy Gear (Weapon/Armor/Cloak/Boots/Gloves/Rings/Necklace)
-- Buy Legendary Runes
-- Items added to **Item Box**
-
-### 📦 Item Box (Inventory)
-- View, Equip, Use, Discard items  
-- Gear gives stats  
-- Runes give bonuses
-
-### 🧰 Equipment System
-- Equip items to dedicated slots  
-- Unequip items anytime  
-- Auto-calculated **gear bonus stats**
-
-### ⚠️ Penalty Mode
-- If quest not finished by **8 PM**
-- System triggers a penalty survival mode
-- Player must tap 50 times to escape
-
-### 💬 System Consultant (AI Chat)
-- Ask questions to the “System”
-- Powered by Google Gemini API
-- Messages are stored per user
-- CLEAR button resets chat
-
----
-
-## 🛠️ TECH STACK
-
-| Technology | Purpose |
-|-----------|---------|
-| React + Vite | Frontend Framework |
-| TypeScript | Strong typing |
-| LocalStorage | User persistence |
-| TailwindCSS | UI Styling |
-| Google Gemini API | AI chat system |
+- 🧠 **AI System Consultant** (Gemini-powered)
+- 📅 **Daily Quest Tracking** (Pushups, Situps, Squats, Running)
+- ⚔️ **Equipment System**  
+  Weapons, Armor, Runes, Cloaks, Rings, etc.
+- 🎒 **Inventory + Shop System**
+- 🧪 **Potions, Materials, Loot Boxes**
+- 📈 **Leveling, XP, Stats, Rank Progression**
+- 🔔 **System Notifications**
+- 🔊 **Sound Effects**
+- 🌑 **Solo Leveling Dark UI Theme**
+- 🔥 **Penalty Mode** (20:00 survival clicks — from anime)
+- 💾 **LocalStorage Save System**
 
 ---
 
@@ -93,58 +47,105 @@ src/
 public/
 │── index.html
 │
-.env.local        ← (HIDDEN — contains API key)
+.env.local        ← (HIDDEN — contains API key, DO NOT upload)
 .gitignore        ← (prevents .env.local from uploading)
 package.json
 vite.config.ts
-README.md
+README.md```
 
----
+🔐 Environment Setup
+Create a file:
 
-🔧 INSTALLATION
-1️⃣ Clone the Repository
-git clone https://github.com/YOUR-USERNAME/YOUR-REPO.git
-cd YOUR-REPO
+lua
+Copy code
+.env.local
+Inside add:
 
-2️⃣ Install Dependencies
-npm install
-
-3️⃣ Create .env.local
+ini
+Copy code
 VITE_GEMINI_API_KEY=YOUR_API_KEY_HERE
+⚠️ Never upload this file
+It is already protected using .gitignore.
 
+🛠 Installation
+bash
+Copy code
+npm install
+Start development:
 
-IMPORTANT:
-.env.local is automatically protected by .gitignore.
-NEVER upload your API key.
-
-4️⃣ Start Development Server
+bash
+Copy code
 npm run dev
+Build for production:
 
-🌐 DEPLOY TO VERCEL (SAFE API KEY)
-✔ Step 1: Push to GitHub
+bash
+Copy code
+npm run build
+Preview build:
 
-Your .env.local will NOT be uploaded (safe).
+bash
+Copy code
+npm run preview
+☁️ Deploy on Vercel
+Push repo to GitHub
 
-✔ Step 2: On Vercel Dashboard → Project → Settings → Environment Variables
+Go to vercel.com → Import repository
 
-Add:
+Add an environment variable:
 
-KEY: VITE_GEMINI_API_KEY
-VALUE: your_api_key
+ini
+Copy code
+VITE_GEMINI_API_KEY=YOUR_KEY
+Deploy ✔
 
+🤖 System Chat Example
+Ask for training routines
 
-✔ Deploy
-✔ No API key leakage
-✔ Works perfectly
+Ask for diet advice
 
-👑 CREDITS
+Ask for strategy upgrades
 
-Developer: Sajjala Siddardha
+Ask for Solo Leveling themed responses
 
-AI System Integration: Gemini API
+Clear chat anytime
 
-Inspiration: Solo Leveling Webtoon
+📦 Inventory & Gear System
+Buy items from the Shop
 
-🛡️ LICENSE
+Equip gear with stat bonuses
 
-This project is for educational and personal use.
+Inventory saved in LocalStorage
+
+Runes give special buffs
+
+Potions give one-time boosts
+
+🔥 Penalty Mode
+After 20:00, if quests are not completed:
+
+System triggers penalty
+
+User must survive by clicking
+
+Dramatic sound effects
+
+Inspired by anime time-limit penalties
+
+🧙 Powered By
+React + TypeScript
+
+Vite
+
+Gemini AI
+
+TailwindCSS
+
+LocalStorage Persistence
+
+⭐ Give the Project a Star!
+If you like the project, please ⭐ the repo!
+More features coming soon — raids, dungeon mode, awakening system, pets, and more.
+
+📞 Developer
+Built by Sajjala Siddardha
+Solo Leveling Inspired Training Assistant
