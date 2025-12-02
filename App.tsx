@@ -950,7 +950,6 @@ const App: React.FC = () => {
                 ))
               )}
 
-            </div>
    </div>
 
       <div className="flex justify-between items-center mt-4 pt-4 border-t border-slate-700">
